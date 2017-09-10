@@ -1,0 +1,16 @@
+JSDIR=assets/js
+CSSDIR=assets/css
+
+all: index.html $(CSSDIR)/main.min.css $(JSDIR)/main.min.js
+
+index.html: index.fat.html
+	html-minifier --html5 --collapse-whitespace --conservative-collapse --remove-comments -o $@ $<
+
+$(CSSDIR)/main.min.css: $(CSSDIR)/main.css $(CSSDIR)/font-awesome.min.css
+	cleancss -o $@ $^
+
+$(JSDIR)/main.min.js: $(JSDIR)/skel.min.js $(JSDIR)/util.js $(JSDIR)/main.js
+	uglifyjs $^ --compress --mangle --source-map $@.map --prefix relative --output $@
+
+clean:
+	rm -rf index.html $(CSSDIR)/main.min.css $(JSDIR)/main.min.js $(JSDIR)/main.min.js.map
