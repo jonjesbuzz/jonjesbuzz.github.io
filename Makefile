@@ -1,5 +1,6 @@
 JSDIR=assets/js
 CSSDIR=assets/css
+IMGDIR=images/
 
 all: index.html $(CSSDIR)/main.min.css $(JSDIR)/main.min.js
 
