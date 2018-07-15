@@ -11,7 +11,7 @@ $(CSSDIR)/main.min.css: $(CSSDIR)/main.css $(CSSDIR)/font-awesome.min.css
 	cleancss -o $@ $^
 
 $(JSDIR)/main.min.js: $(JSDIR)/skel.min.js $(JSDIR)/util.js $(JSDIR)/main.js
-	uglifyjs $^ --compress --mangle --source-map "filename='$@.map'" --prefix relative --output $@
+	uglifyjs $^ --compress --mangle --source-map "root='https://jjemson.com/',url='/$@.map',filename='$@.map'" --output $@
 
 clean:
 	rm -rf index.html $(CSSDIR)/main.min.css $(JSDIR)/main.min.js $(JSDIR)/main.min.js.map
